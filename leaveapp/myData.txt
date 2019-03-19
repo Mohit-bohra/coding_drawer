@@ -1,0 +1,6 @@
+Name:Raj
+Leaves: 2
+Reason: Sick Leave
+Name:Mohan
+Leaves: 2
+Reason: For Attending Wedding
