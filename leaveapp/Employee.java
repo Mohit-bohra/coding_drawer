@@ -3,7 +3,7 @@ import java.io.Serializable;
 
 public class Employee implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+	private int empID;
 	private String name;
 	private int leaves;
 	private String reason;
@@ -12,7 +12,8 @@ public class Employee implements Serializable {
         {
 	};
 
-	Employee(String name, int leaves, String reason) {
+	Employee(int empID,String name, int leaves, String reason) {
+		this.empID= empID;
 		this.name = name;
 		this.leaves = leaves;
 		this.reason = reason;
@@ -20,6 +21,6 @@ public class Employee implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Name:" + name + "\nLeaves Applied " + age + "\nReason: " + reason;
+		return "ID:" + empID + "Name:" + name + "\nLeaves Applied " + age + "\nReason: " + reason;
 	}
 }
