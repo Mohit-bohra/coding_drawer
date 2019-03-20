@@ -6,47 +6,68 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import leaveapp.Employee;
 
-public class Manager {
+public class Manager implements Serializable{
+ Employee emp = new Employee();
+    void newEmp(int empid) {
+        try {
+            FileInputStream fileIn = new FileInputStream("myData.txt");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            ArrayList<Employee> allEmployees = (ArrayList<Employee>) in.readObject();
 
-	public static void main(String[] args) {
+            for(int i = 0; i < allEmployees.size(); i++){
+                emp = allEmployees.get(i);
+                emp.viewLeaveSummary();
+                out.println("  "+ emp.getEmpID() +" ");
+                if(emp.getEmpID() == empid)
+                  return 1;
+                    break;
+            }
+            in.close();
+            fileIn.close();
+        }
+        catch (ClassNotFoundException e) {
+            out.println("Employee Not Found");
+            return 0;   
+        }
+        catch (Exception e) {
+            out.println("Data Stream Error");
+            return 0; 
 
-		Employee e1 = new Employee(4110,"Raj", 2, "Sick Leave");    //This data can be made dynamic to accept user data
-		Employee e2 = new Employee(4111,"Mohan", 2, "For Attending Wedding"); //Employee refers to Object class
+} 
+       void delEmp() {
+        try {
+            FileInputStream fileIn = new FileInputStream("myData.txt");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            ArrayList<Employee> allEmployees = (ArrayList<Employee>) in.readObject();
+            Employee newEmp;
+            for(int i = 0; i < allEmployees.size(); i++){
+                newEmp = allEmployees.get(i);
+                if(newEmp.getEmpNo() == emp.getEmpNo()) {
+                    allEmployees.remove(i);
+                    allEmployees.add(i, emp);
 
-		try {
-			FileOutputStream f = new FileOutputStream(new File("myData.txt"));
-			ObjectOutputStream o = new ObjectOutputStream(f);
+                    FileOutputStream fileOut = new FileOutputStream("myData.txt");
+                    ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                    out.writeObject(allEmployees);
+                    out.close();
+                    fileOut.close();
+                    break;
+                }
+            }
+            in.close();
+            fileIn.close();
+        }
+        catch (ClassNotFoundException e) {
+            out.println("Employee Not Found");
+            
+        }
+        catch (Exception e) {
+            out.println("Data Stream Error");
+            
+        }
+    }
 
-			// Write objects to file
-			o.writeObject(e1);
-			o.writeObject(e2);
 
-			o.close();
-			f.close();
-
-			FileInputStream fi = new FileInputStream(new File("myData.txt"));
-			ObjectInputStream oi = new ObjectInputStream(fi);
-
-			// Read objects
-			Employee emp1 = (Employee) oi.readObject();
-			Employee emp2 = (Employee) oi.readObject();
-
-			System.out.println(emp1.toString());
-			System.out.println(emp2.toString());
-
-			oi.close();
-			fi.close();
-
-		} catch (FileNotFoundException e) {
-			System.out.println("File not found");
-		} catch (IOException e) {
-			System.out.println("Error initializing stream");
-		} catch (ClassNotFoundException e) {
-			
-			e.printStackTrace();
-		}
-
-	}
-
-}
+}                 
