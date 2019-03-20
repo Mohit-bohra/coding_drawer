@@ -11,8 +11,8 @@ public class Manager {
 
 	public static void main(String[] args) {
 
-		Employee e1 = new Employee("Raj", 2, "Sick Leave");    //This data can be made dynamic to accept user data
-		Employee e2 = new Employee("Mohan", 2, "For Attending Wedding"); //Employee refers to Object class
+		Employee e1 = new Employee(4110,"Raj", 2, "Sick Leave");    //This data can be made dynamic to accept user data
+		Employee e2 = new Employee(4111,"Mohan", 2, "For Attending Wedding"); //Employee refers to Object class
 
 		try {
 			FileOutputStream f = new FileOutputStream(new File("myData.txt"));
