@@ -21,6 +21,6 @@ public class Employee implements Serializable {
 
 	@Override
 	public String toString() {
-		return "ID:" + empID + "Name:" + name + "\nLeaves Applied " + age + "\nReason: " + reason;
+		return "\nID:" + empID + "\nName:" + name + "\nLeaves Applied " + age + "\nReason: " + reason;
 	}
 }
