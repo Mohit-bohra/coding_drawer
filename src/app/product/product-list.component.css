@@ -1,0 +1,26 @@
+thead{
+    color:#337AB7
+}
+
+h1{
+    color:#337AB7   
+}
+.card-body{
+    background-color:#ffffff;
+}
+.card-header{
+  /* background-image: url("https://corporate.dominos.co.uk/Media/Default/Image%20Library/Image%20library%20-%20logos/RGB_White_Type_Tile_Only.png"); */
+    background-color: #1a75ff;
+  float: left;
+}
+.title {
+    float: left;
+    
+}
+h1{
+    color: black;
+}
+.card{
+    height: 100%;
+    width: 100%;
+}
